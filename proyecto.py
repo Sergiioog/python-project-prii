@@ -13,8 +13,8 @@ import csv, json, os, random, math
 from datetime import datetime
 from typing import List, Dict, Optional
 import pandas as pd
-
-
+import random as rand
+from datetime import datetime
 #import numpy as np
 #import matplotlib.pyplot as plt
 #from scipy import optimize, integrate, interpolate
@@ -115,17 +115,22 @@ def filter_customers_json(in_path: str, out_path: str) -> int:
 # 3) Comprensiones, random, datetime
 def squares_of_odds(n: int) -> List[int]:
     """Lista de cuadrados de impares 1..n (ambos inclusive)."""
-    pass
+    impares = [i**2 for i in range(1,n + 1) if i % 2 != 0]
+    print(impares)
+    return impares
 
 
 def random_color(seed: int) -> str:
     """Fija random.seed(seed) y retorna un color aleatorio de ['rojo','azul','verde']."""
-    pass
+    rand.seed(seed)
+    print(random.choice(['rojo','azul','verde']))
+    return random.choice(['rojo','azul','verde'])
 
 
 def days_between(d1: str, d2: str) -> int:
     """Recibe fechas 'YYYY-MM-DD'. Devuelve abs(d2-d1) en días (entero)."""
-    pass
+    print("Diferencia de dias:",abs((datetime.strptime(d2, '%Y-%m-%d' ))-(datetime.strptime(d1, '%Y-%m-%d' ))))
+    return abs((datetime.strptime(d2, '%Y-%m-%d' ))-(datetime.strptime(d1, '%Y-%m-%d' )))
 
 
 # 4) NumPy
