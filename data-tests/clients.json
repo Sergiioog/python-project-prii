@@ -1,0 +1,43 @@
+[
+  {
+    "email": "sergio@gmail.com",
+    "age": 60
+  },
+  {
+    "email": "maria@yahoo.com",
+    "age": 25
+  },
+  {
+    "email": "juanexample.com",
+    "age": 40
+  },
+  {
+    "email": "ana@outlook.com",
+    "age": 0
+  },
+  {
+    "email": "pedroexample.com",
+    "age": -5
+  },
+  {
+    "email": "lucia@hotmail.com",
+    "age": 18
+  },
+  {
+    "email": "noemailhere",
+    "age": 30
+  },
+  {
+    "email": "carlos@gmail.com",
+    "age": -1
+  },
+  {
+    "email": "sergio@gmail.com",
+    "age": 21
+  },
+  {
+    "email": "pruebotegmail.com",
+    "age": 20
+  }
+
+]

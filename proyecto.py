@@ -12,10 +12,12 @@ Instrucciones generales:
 import csv, json, os, random, math
 from datetime import datetime
 from typing import List, Dict, Optional
+import pandas as pd
 
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy import optimize, integrate, interpolate
+
+#import numpy as np
+#import matplotlib.pyplot as plt
+#from scipy import optimize, integrate, interpolate
 
 # 1) Básicos y cadenas
 def sum_even(nums: List[int]) -> int:
@@ -66,14 +68,27 @@ def count_words(text: str) -> Dict[str, int]:
 # 2) Ficheros y excepciones
 def safe_divide(a: float, b: float) -> Optional[float]:
     """Devuelve a/b. Si b==0 o hay error, devuelve None."""
-    pass
+    try :
+        division : float =  a / b
+        print("División final: ", division)
+    except Exception as e:
+        print("Ha habido un error: ",e)
+    finally:
+        print("Fin del programa")
+        return None
 
 
-def read_csv_sum_revenue(path: str) -> float:
+def read_csv_sum_revenue(path: str) -> float: #REVISAR
     """
     Lee un CSV con columnas units_sold y unit_price.
     Convierte a numérico; ignora NaN o negativos; suma units_sold*unit_price.
     """
+    unitsCSV = pd.read_csv(path)
+    for row in unitsCSV.itertuples(index=False):
+        units = row.units_sold
+        prize = row.unit_price
+        finalResult = units*prize
+        print(f"Unidades:{units}, Precio/u:{prize}, Resultado:{finalResult}")
     pass
 
 
@@ -83,7 +98,18 @@ def filter_customers_json(in_path: str, out_path: str) -> int:
     Escribe en out_path solo clientes con email que contenga '@' y age > 0.
     Devuelve el número de clientes escritos.
     """
-    pass
+    usersJSON = pd.read_json(in_path)
+    usersFiltered : list = []
+    for users in usersJSON.itertuples(index=False): #Lo convertirmos a tuplas
+        userEmail = users.email
+        userAge = users.age
+        if "@" in userEmail and userAge > 0: #filtramos
+            usersFiltered.append({"email":userEmail,"age":userAge})
+
+    pd.DataFrame(usersFiltered).to_json(out_path, orient="records", indent=2) #Convertimos la lista en un dataFrame, y con to_json, escribimos en out_path, dándole orientación de tipo "records" y una indentación para que se vea mas bonito
+    print("Nuevo JSON: ", usersFiltered)
+    print("Usuarios anadidos:", len(usersFiltered))
+    return len(usersFiltered)
 
 
 # 3) Comprensiones, random, datetime
