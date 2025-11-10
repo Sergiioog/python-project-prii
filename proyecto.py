@@ -79,7 +79,7 @@ def safe_divide(a: float, b: float) -> Optional[float]:
         return None
 
 
-def read_csv_sum_revenue(path: str) -> float: #REVISAR
+def read_csv_sum_revenue(path: str) -> float:
     """
     Lee un CSV con columnas units_sold y unit_price.
     Convierte a numérico; ignora NaN o negativos; suma units_sold*unit_price.
