@@ -145,8 +145,11 @@ def numpy_minmax_scale(arr: List[float]) -> List[float]:
     """
     Normaliza a [0,1]. Si todos los valores son iguales, devuelve todos 0.0.
     """
-    pass
-
+    if max(arr) == min(arr):
+        print("Todos son 0:", [0.0 for _ in arr])
+        return [0.0 for _ in arr]
+    print("Números normalizados:", [(number - min(arr))/(max(arr) - min(arr)) for number in arr ])
+    return [(number - min(arr))/(max(arr) - min(arr)) for number in arr ]
 
 # 5) SciPy
 def scipy_root_cos_minus_x() -> float:
