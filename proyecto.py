@@ -15,7 +15,7 @@ from typing import List, Dict, Optional
 import pandas as pd
 import random as rand
 from datetime import datetime
-#import numpy as np
+import numpy as np
 #import matplotlib.pyplot as plt
 #from scipy import optimize, integrate, interpolate
 
@@ -136,7 +136,9 @@ def days_between(d1: str, d2: str) -> int:
 # 4) NumPy
 def numpy_vector_length(v: List[float]) -> float:
     """Norma Euclídea de v con NumPy."""
-    pass
+    print(np.linalg.norm(v))
+    return np.linalg.norm(v)
+
 
 
 def numpy_minmax_scale(arr: List[float]) -> List[float]:
