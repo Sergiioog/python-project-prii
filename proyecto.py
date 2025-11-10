@@ -17,7 +17,7 @@ import random as rand
 from datetime import datetime
 import numpy as np
 import scipy
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 #from scipy import optimize, integrate, interpolate
 
 # 1) Básicos y cadenas
@@ -185,18 +185,37 @@ def plot_line_time_series(xs: List[float], ys: List[float], out_path: str) -> bo
     """
     Dibuja línea con título y etiquetas. Guarda en out_path y devuelve True si existe.
     """
-    pass
-
+    plt.figure()
+    plt.plot(xs,ys,marker='o')
+    plt.title="Gráfico"
+    plt.xlabel="Eje x"
+    plt.ylabel="Eje y"
+    plt.tight_layout()
+    plt.savefig(out_path)
+    plt.close()
+    return os.path.isfile(out_path)
 
 def plot_bar(categories: List[str], values: List[float], out_path: str) -> bool:
     """Barras con etiquetas. Guarda y devuelve True si existe."""
-    pass
-
+    plt.figure()
+    bars = plt.bar(categories,values)
+    plt.bar_label(bars)
+    plt.savefig(out_path)
+    plt.close()
+    return os.path.isfile(out_path)
 
 def plot_scatter(x: List[float], y: List[float], out_path: str) -> bool:
     """Dispersión con grid y legend (usa label). Guarda y devuelve True si existe."""
-    pass
-
+    plt.figure()
+    plt.scatter(x, y, c='orange', label="Datos")  # puntos más grandes y color
+    plt.title("Gráfico de dispersión")  # título
+    plt.xlabel("Eje X")
+    plt.ylabel("Eje Y")
+    plt.grid(True)  # grid con estilo
+    plt.legend()
+    plt.savefig(out_path)
+    plt.close()
+    return os.path.isfile(out_path)
 
 # 7) POO
 class Vector2D:
