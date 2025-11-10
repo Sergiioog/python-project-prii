@@ -16,6 +16,7 @@ import pandas as pd
 import random as rand
 from datetime import datetime
 import numpy as np
+import scipy
 #import matplotlib.pyplot as plt
 #from scipy import optimize, integrate, interpolate
 
@@ -154,17 +155,29 @@ def numpy_minmax_scale(arr: List[float]) -> List[float]:
 # 5) SciPy
 def scipy_root_cos_minus_x() -> float:
     """Raíz de f(x)=cos(x)-x con optimize.root, x0=0.5."""
-    pass
+    x0 = 0.5
+    print(scipy.optimize.root(lambda x : np.cos(x) - x,x0))
+    return scipy.optimize.root(lambda x : np.cos(x) - x,x0)
 
 
 def scipy_integral_sin() -> float:
     """Integral de sin(x) de 0 a pi con integrate.quad. Devuelve el área."""
-    pass
+    finalIntegral, _ = scipy.integrate.quad(math.sin,0,math.pi)
+    print("Área de la integral: ", finalIntegral)
+    return finalIntegral
 
 
 def interp_linear(x: List[float], y: List[float], xq: float) -> float:
     """Interpolación lineal: devuelve f(xq) usando interpolate.interp1d."""
-    pass
+    result : float = 0
+    try:
+        linealInterpolation = scipy.interpolate.interp1d(x,y)
+        result = linealInterpolation(xq)
+        print(result)
+    except Exception as e:
+        print(f"ERROR: xq={xq} no está en el rango de x={x[0]} a x={x[-1]}")
+    finally:
+        return result
 
 
 # 6) Visualización
